@@ -1,0 +1,744 @@
+/* ── Google Fonts ───────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+@import "tailwindcss";
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN SYSTEM — EVOLUA SYSTEM-CORE  v5.0 (Light)
+   Brand kit oficial v5.0 (docs/brand-kit.html).
+   Os mesmos nomes de tokens da v3 dark são mantidos
+   (canvas, surface, text-primary, dark, neon, v-*, etc.)
+   mapeados para a paleta light — assim os componentes
+   migram sem reescrita de classes.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@theme {
+  /* ── Paleta v5.0 — primitivas oficiais ──────────────────*/
+  --color-canvas-base:    #F8F8FF;
+  --color-lavender:       #EAE8FF;
+  --color-lavender-mid:   #C5C1FF;
+  --color-lavender-deep:  #9D97F5;
+  --color-primary-base:   #6C63FF;
+  --color-primary-dark:   #5650D4;
+  --color-primary-light:  #8B85FF;
+  --color-deep:           #2D2B55;
+  --color-deep-mid:       #3D3A6B;
+  --color-deep-light:     #514E85;
+  --color-ink:            #1A1A2E;
+  --color-ink-soft:       #4A4A6A;
+  --color-muted:          #8888AA;
+
+  /* ── Escala v-*  (compat: usada por componentes legados) ──
+     Mapeada para a família Lavender→Primary→Deep.            */
+  --color-v-950: #1A1A2E;   /* ink — fundos escuros máximos    */
+  --color-v-900: #2D2B55;   /* deep — fundos escuros padrão    */
+  --color-v-800: #3D3A6B;   /* deep-mid — destaques            */
+  --color-v-700: #5650D4;   /* primary-dark — hover de CTA     */
+  --color-v-600: #6C63FF;   /* primary — CTA principal         */
+  --color-v-500: #8B85FF;   /* primary-light                   */
+  --color-v-400: #9D97F5;   /* lavender-deep                   */
+  --color-v-300: #C5C1FF;   /* lavender-mid                    */
+  --color-v-200: #D8D6FF;
+  --color-v-100: #EAE8FF;   /* lavender                        */
+  --color-v-50:  #F8F8FF;   /* canvas                          */
+
+  /* ── Acento rose (urgência, dado crítico) ──────────────*/
+  --color-rose:    #FB7185;
+
+  /* ── Acento fúcsia (legado) ────────────────────────────*/
+  --color-acc-500: #E879F9;
+  --color-acc-400: #F0ABFC;
+
+  /* ── Neon — CTA sobre fundo escuro (deep) ──────────────
+     Contraste neon sobre deep #2D2B55 = 9.4:1               */
+  --color-neon:         #C4F135;
+  --color-neon-dark:    #A8D400;
+  --color-neon-surface: rgba(196,241,53,0.15);
+
+  /* ── Surfaces — alias semântico ────────────────────────
+     "dark" = superfície escura usada em CTAs, indicators,
+     painéis de marca. Equivale a deep #2D2B55.              */
+  --color-dark:         #2D2B55;
+  --color-dark-raised:  #3D3A6B;
+  --color-dark-border:  rgba(255,255,255,.08);
+
+  /* ── Canvas & Surface (light) ──────────────────────────*/
+  --color-canvas:          #F8F8FF;
+  --color-surface:         #FFFFFF;
+  --color-surface-low:     #F0EFF9;
+  --color-surface-high:    #EAE8FF;
+  --color-surface-overlay: rgba(255,255,255,.78);
+
+  /* ── Border ────────────────────────────────────────────*/
+  --color-border:        #E0DFEF;
+  --color-border-soft:   rgba(26,26,46,.06);
+  --color-border-neon:   rgba(196,241,53,.30);
+  --color-border-brand:  rgba(108,99,255,.30);
+  --color-border-bright: #C5C1FF;
+
+  /* ── Text (em superfície clara) ────────────────────────*/
+  --color-text-primary:   #1A1A2E;   /* ink — títulos, dados  */
+  --color-text-secondary: #4A4A6A;   /* ink-soft              */
+  --color-text-tertiary:  #8888AA;   /* muted                 */
+  --color-text-inverse:   #FFFFFF;
+  --color-text-brand:     #6C63FF;
+  --color-text-neon:      #C4F135;
+
+  /* ── Aliases de compatibilidade Material/Tailwind ──────*/
+  --color-primary:                  #6C63FF;
+  --color-on-primary:               #FFFFFF;
+  --color-primary-container:        #EAE8FF;
+  --color-on-primary-container:     #2D2B55;
+  --color-on-primary-fixed:         #1A1A2E;
+  --color-primary-fixed:            #6C63FF;
+  --color-primary-fixed-dim:        #5650D4;
+  --color-on-surface:               #1A1A2E;
+  --color-on-surface-variant:       #4A4A6A;
+  --color-outline-variant:          #E0DFEF;
+  --color-outline:                  #C5C1FF;
+  --color-surface-container:        #FFFFFF;
+  --color-surface-container-low:    #F8F8FF;
+  --color-surface-container-high:   #F0EFF9;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-highest:#EAE8FF;
+  --color-error:                    #ba1a1a;
+  --color-error-container:          #ffdad6;
+  --color-on-error-container:       #93000a;
+  --color-inverse-surface:          #2D2B55;
+  --color-inverse-on-surface:       #F8F8FF;
+
+  /* ── Aliases dashboard compat ──────────────────────────*/
+  --color-brand:          #6C63FF;
+  --color-brand-dark:     #2D2B55;
+  --color-brand-light:    #8B85FF;
+  --color-brand-muted:    #8888AA;
+  --color-brand-surface:  #EAE8FF;
+  --color-brand-glow:     rgba(108,99,255,.20);
+
+  /* ── Acento olive (compat — ícones em fundos claros) ───
+     Usado em depoimentos, FAB, banners. Mapeado para deep. */
+  --color-olive:          #2D2B55;
+
+  /* ── Silver (dividers neutros) ────────────────────────*/
+  --color-silver:         #E0DFEF;
+
+  /* ── Preto/branco absoluto ─────────────────────────────*/
+  --color-black:  #1A1A2E;
+  --color-white:  #FFFFFF;
+
+  /* ── Semantic ──────────────────────────────────────────*/
+  --color-success:         #10B981;
+  --color-success-surface: rgba(16,185,129,.12);
+  --color-warning:         #D97706;
+  --color-warning-surface: rgba(217,119,6,.12);
+  --color-danger:          #DC2626;
+  --color-danger-surface:  rgba(220,38,38,.10);
+  --color-info:            #2563EB;
+  --color-info-surface:    rgba(37,99,235,.10);
+
+  /* ── Typography ────────────────────────────────────────*/
+  --font-sans:     'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display:  'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-headline: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body:     'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-label:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Spacing extra ──────────────────────────────────────*/
+  --spacing-18: 4.5rem;
+
+  /* ── Border radius ──────────────────────────────────────
+     Brand v5: estética geométrica — radius mínimo           */
+  --radius-xs:   0.125rem;  /* 2px   — estética geométrica   */
+  --radius-sm:   0.25rem;   /* 4px   — badges, chips         */
+  --radius-md:   0.375rem;  /* 6px   — botões, inputs        */
+  --radius-lg:   0.5rem;    /* 8px   — cards menores         */
+  --radius-xl:   0.75rem;   /* 12px  — cards principais      */
+  --radius-2xl:  1rem;
+  --radius-3xl:  1.5rem;
+
+  /* ── Shadows (ajustadas para fundos claros) ────────────*/
+  --shadow-neon:  0 4px 20px rgba(196,241,53,.30);
+  --shadow-card:  0 1px 3px rgba(26,26,46,.06), 0 4px 12px rgba(26,26,46,.04);
+  --shadow-dark:  0 8px 28px rgba(26,26,46,.12), 0 2px 8px rgba(26,26,46,.06);
+  --shadow-brand: 0 4px 20px rgba(108,99,255,.25);
+  --shadow-glass: 0 2px 16px rgba(26,26,46,.08);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BASE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+::selection {
+  background: rgba(108,99,255,.20);
+  color: var(--color-text-primary);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLLBAR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(108,99,255,.30); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(108,99,255,.55); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MATERIAL SYMBOLS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  vertical-align: middle;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   UTILITÁRIOS DE DESIGN SYSTEM
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* App background — canvas light */
+.app-bg {
+  background: var(--color-canvas);
+}
+
+/* Glass panel — branco translúcido sobre canvas */
+.glass {
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-light {
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+}
+
+/* Brand fill — primary solid para CTAs */
+.brand-gradient {
+  background: var(--color-primary);
+}
+
+/* Nav item ativo — deep escuro com neon (igual landing) */
+.nav-active {
+  background: var(--color-dark);
+  color: var(--color-neon);
+}
+.nav-active .material-symbols-outlined {
+  color: var(--color-neon);
+}
+
+/* CTA pill — deep com neon (igual landing) */
+.cta-dark {
+  background: var(--color-dark);
+  color: var(--color-neon);
+  box-shadow: var(--shadow-dark);
+}
+.cta-dark:hover:not(:disabled) {
+  background: #1A1A2E;
+  box-shadow: var(--shadow-neon);
+}
+
+/* Brand text — primary */
+.brand-text-gradient {
+  color: var(--color-primary);
+}
+
+/* ── Botão primário — primary solid sobre fundo claro ──
+   Em light, o CTA padrão é primary com texto branco.    */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  background: var(--color-primary);
+  box-shadow: var(--shadow-brand);
+  transition: background .2s, box-shadow .2s, transform .15s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  box-shadow: 0 6px 28px rgba(108,99,255,.35);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: .50;
+  cursor: not-allowed;
+}
+
+/* ── Botão secundário ───────────────────────────────────*/
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  transition: background .2s, border-color .2s, transform .15s;
+  cursor: pointer;
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-surface-low);
+  border-color: var(--color-border-bright);
+  transform: translateY(-1px);
+}
+.btn-secondary:disabled { opacity: .50; cursor: not-allowed; }
+
+/* ── Botão ghost ────────────────────────────────────────*/
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  transition: background .15s, color .15s;
+  cursor: pointer;
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-surface-low);
+  color: var(--color-primary);
+}
+
+/* ── Card ───────────────────────────────────────────────*/
+.card {
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Input base ─────────────────────────────────────────*/
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.input::placeholder { color: var(--color-text-tertiary); }
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(108,99,255,.18);
+}
+
+/* ── Label ──────────────────────────────────────────────*/
+.label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.375rem;
+}
+
+/* ── Badge ──────────────────────────────────────────────*/
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.badge-brand {
+  background: rgba(108,99,255,.10);
+  color: var(--color-primary);
+  border: 1px solid rgba(108,99,255,.25);
+}
+.badge-success {
+  background: var(--color-success-surface);
+  color: var(--color-success);
+}
+.badge-warning {
+  background: var(--color-warning-surface);
+  color: var(--color-warning);
+}
+.badge-danger {
+  background: var(--color-danger-surface);
+  color: var(--color-danger);
+}
+
+/* ── Avatar ─────────────────────────────────────────────*/
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(108,99,255,.10);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  border: 2px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+/* ── Divider ────────────────────────────────────────────*/
+.divider {
+  height: 1px;
+  background: var(--color-border-soft);
+  border: none;
+  margin: 0;
+}
+
+/* ── Link brand ─────────────────────────────────────────*/
+.link-brand {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.link-brand:hover { opacity: .70; text-decoration: underline; }
+
+/* ── Section label ──────────────────────────────────────*/
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .10em;
+  color: var(--color-text-tertiary);
+}
+
+/* ── btn-text (utility tipográfica do brand v5) ────────
+   Space Grotesk 700, uppercase, letter-spacing -0.02em   */
+.btn-text {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BRAND-KIT v5 — COMPONENTES OFICIAIS
+   Espelho 1:1 do docs/brand-kit.html §05.
+   Convivem com as classes legadas acima.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Buttons (radius 2px, DM Sans 14/600) ───────────────*/
+.bk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border: none;
+  border-radius: var(--radius-xs);   /* 2px */
+  cursor: pointer;
+  transition: opacity .15s, transform .1s, background .12s, border-color .15s;
+}
+.bk-btn:hover:not(:disabled) { opacity: .88; transform: translateY(-1px); }
+.bk-btn:disabled { opacity: .50; cursor: not-allowed; transform: none; }
+
+.bk-btn-neon    { background: var(--color-neon);    color: var(--color-deep);  font-weight: 700; }
+.bk-btn-primary { background: var(--color-primary); color: var(--color-white); }
+.bk-btn-accent  { background: var(--color-rose);    color: var(--color-ink); }
+.bk-btn-outline { background: transparent; color: var(--color-primary); border: 1.5px solid var(--color-primary); }
+.bk-btn-ghost   { background: transparent; color: var(--color-ink); border: 1.5px solid var(--color-lavender-mid); }
+
+/* ── Badges (radius 2px, 10px/700, uppercase, ls .8px) ──*/
+.bk-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  line-height: 1.4;
+}
+.bk-badge-v    { background: var(--color-lavender);          color: var(--color-primary-dark); border: 1px solid var(--color-lavender-mid); }
+.bk-badge-acc  { background: var(--color-lavender);          color: var(--color-primary-dark); border: 1px solid var(--color-lavender-mid); }
+.bk-badge-neon { background: var(--color-neon);              color: var(--color-deep); }
+.bk-badge-rose { background: rgba(251,113,133,.15);          color: #B8485A;                   border: 1px solid rgba(251,113,133,.4); }
+.bk-badge-dark { background: var(--color-ink);               color: var(--color-lavender-deep);border: 1px solid var(--color-deep-mid); }
+
+/* ── Alerts (border-left 4px, padding 14/18, 13px) ─────*/
+.bk-alert {
+  padding: 14px 18px;
+  border-left: 4px solid;
+  border-radius: var(--radius-xs);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.bk-alert + .bk-alert { margin-top: 8px; }
+.bk-alert-v    { border-left-color: var(--color-primary);     background: rgba(108,99,255,.08);   color: var(--color-primary-dark); }
+.bk-alert-acc  { border-left-color: var(--color-lavender-mid);background: var(--color-lavender);  color: var(--color-primary-dark); }
+.bk-alert-neon { border-left-color: var(--color-neon);        background: rgba(196,241,53,.18);   color: var(--color-ink); }
+.bk-alert-err  { border-left-color: var(--color-rose);        background: rgba(251,113,133,.10);  color: #B8485A; }
+
+/* ── Stat cards (KPI) ──────────────────────────────────*/
+.bk-stat-grid  { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.bk-stat-card  {
+  background: var(--color-surface-low);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-xs);
+  padding: 20px 24px;
+}
+.bk-stat-label {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.bk-stat-value {
+  font-family: var(--font-headline);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1;
+}
+.bk-stat-delta {
+  font-size: 13px;
+  color: var(--color-primary);
+  margin-top: 4px;
+  font-weight: 600;
+}
+.bk-stat-delta-up   { color: var(--color-success); }
+.bk-stat-delta-down { color: var(--color-rose); }
+
+/* ── UI card (lavender + accent bar) ───────────────────*/
+.bk-ui-card {
+  position: relative;
+  background: var(--color-lavender);
+  border: 1px solid var(--color-lavender-mid);
+  border-radius: var(--radius-xs);
+  padding: 24px 24px 24px 32px;
+}
+.bk-ui-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--color-primary);
+}
+.bk-ui-card-title { font-family: var(--font-headline); font-size: 15px; font-weight: 600; color: var(--color-ink); }
+.bk-ui-card-body  { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-top: 6px; }
+
+/* ── Inputs brand-kit (espelho do .input-demo) ─────────*/
+.bk-input {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-outline-variant);
+  color: var(--color-ink);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-radius: var(--radius-xs);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.bk-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(108,99,255,.18);
+}
+.bk-input::placeholder { color: var(--color-muted); }
+.bk-input-label {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* ── Section tag (header pattern §03) ──────────────────*/
+.bk-section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PAGE HEADER PATTERN
+   Padrão para topo de páginas do dashboard.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.page-header__main { flex: 1 1 auto; min-width: 0; }
+.page-header__eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+.page-header__title {
+  font-family: var(--font-headline);
+  font-size: 1.5rem;          /* 24px */
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0;
+}
+.page-header__sub {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-top: 6px;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+.page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   EMPTY STATE PATTERN
+   Para listas vazias, sem-resultado, primeira-vez.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-outline-variant);
+  border-radius: var(--radius-xs);
+  gap: 12px;
+}
+.empty-state__icon {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  background: var(--color-lavender);
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+.empty-state__icon .material-symbols-outlined {
+  font-size: 28px;
+  font-variation-settings: 'FILL' 1, 'wght' 500;
+}
+.empty-state__title {
+  font-family: var(--font-headline);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.empty-state__desc {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  max-width: 42ch;
+  line-height: 1.6;
+}
+.empty-state__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOCUS RINGS — acessibilidade WCAG AA
+   Espelho do brand-kit: 3px primary glow no input;
+   2px solid primary + offset em controles interativos.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:where(button, a, [role="button"], [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+:where(input, select, textarea):focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(108,99,255,.18);
+}
+/* CTAs sobre fundos escuros (bg-dark/text-neon) usam neon ring */
+.cta-dark:focus-visible,
+.bk-btn-neon:focus-visible,
+[class*="bg-dark"]:focus-visible {
+  outline-color: var(--color-neon);
+}
