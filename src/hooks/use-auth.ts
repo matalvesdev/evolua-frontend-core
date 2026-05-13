@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
+import { setSentryUser } from '@/lib/sentry'
 import { useRouter } from '@tanstack/react-router'
 import type { User } from '@supabase/supabase-js'
 
@@ -40,7 +41,9 @@ export function useUser() {
     // Escuta mudanças de sessão em tempo real (login em outra aba, token refresh, etc.)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (cancelled) return
-      setUser(session?.user ?? null)
+      const u = session?.user ?? null
+      setUser(u)
+      setSentryUser(u ? { id: u.id } : null)
       setLoading(false)
       if (!session) setError(null) // limpa erro ao fazer logout
     })
